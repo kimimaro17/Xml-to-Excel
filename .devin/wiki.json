@@ -1,1 +1,135 @@
-The content has been copied to your clipboard. Please paste it here to complete the file creation.
+{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "Project Overview",
+      "purpose": "High-level introduction to the XML-to-Excel CFDI converter project: what it does, who it is for, and how the two versions relate. Links to child pages for setup and version comparison.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Getting Started",
+      "purpose": "How to run the tool: prerequisites (Python 3.13, pandas, tkinter), running from source vs. using the pre-built EXE, placing XML files in the correct folder, and reading the output Excel file.",
+      "parent": "Project Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Version History and Changelog",
+      "purpose": "Comparison of Version1 and Version2: what changed between releases, new fields added (Retenciones, CfdiRelacionados, ObjetoImp, Descuento), refactored namespace helpers, and expanded CFDI 3.3/4.0 dual-support.",
+      "parent": "Project Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Core Application Logic",
+      "purpose": "Overview of the main script architecture shared by both versions: the ETL pipeline from XML discovery to Excel output, the tkinter GUI layer, and error handling. Links to child pages for XML parsing and Excel output details.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "CFDI XML Parsing Pipeline",
+      "purpose": "Detailed walkthrough of how copiar_xml.py discovers, parses, and extracts data from CFDI XML files: file discovery via os.listdir, namespace handling for CFDI 3.3 (NS33) and 4.0 (NS40), the find_one/findall_any helper functions (Version2), and extraction of every CFDI node (Comprobante, Emisor, Receptor, Conceptos, Impuestos, Traslados, Retenciones, Complemento/TimbreFiscalDigital, CfdiRelacionados).",
+      "parent": "Core Application Logic",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Excel Output Generation",
+      "purpose": "How extracted data is accumulated into the 'registros' list of dicts, converted to a pandas DataFrame, and written to resultado_cfdi.xlsx with to_excel(index=False). Column naming conventions (XPath-style keys), handling of multi-Concepto invoices, and the output file location logic.",
+      "parent": "Core Application Logic",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "GUI and Error Handling",
+      "purpose": "How the tkinter message boxes are used to inform the user of the working directory, success, and errors. The frozen/non-frozen path detection (sys.frozen), the try/except block with traceback, and the messagebox.showerror pattern.",
+      "parent": "Core Application Logic",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Output Excel Schema",
+      "purpose": "Description of the columns produced in resultado_cfdi.xlsx: the XPath-style column naming convention, one row per XML file, how multiple Conceptos expand into indexed columns, and which fields come from each CFDI node.",
+      "parent": "Sample Data",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Build and Distribution",
+      "purpose": "Overview of how the Python scripts are packaged into standalone Windows executables using PyInstaller. Links to child pages covering the PyInstaller spec files and the runtime internals.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "PyInstaller Spec Files",
+      "purpose": "Explanation of the copiar_xml.spec configuration: Analysis block (entry script, no extra binaries/datas), PYZ archive creation, EXE block settings (name, console=False, UPX compression, no windowed traceback). How to rebuild the EXE from source.",
+      "parent": "Build and Distribution",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "PyInstaller Build Artifacts",
+      "purpose": "What the build/ and dist/ directories contain: Analysis-00.toc (dependency manifest), PYZ-00.toc/pyz (compressed Python modules), PKG-00.toc (full package manifest), EXE-00.toc (binary layout), base_library.zip (standard library), localpycs/ (bootstrap bytecode), warn-*.txt (import warnings), xref-*.html (cross-reference report). Covers both convertidor_cfdi and copiar_xml builds.",
+      "parent": "Build and Distribution",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "PyInstaller Runtime Internals",
+      "purpose": "How the frozen executable loads modules at runtime: the ZlibArchiveReader (pyimod01_archive) for reading PYZ archives, the PyiFrozenFinder/PyiFrozenLoader import machinery (pyimod02_importers), ctypes patching (pyimod03_ctypes), and pywin32 initialization (pyimod04_pywin32). Covers the bootstrap sequence from bootloader to main script.",
+      "parent": "Build and Distribution",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Glossary",
+      "purpose": "Definitions of all domain-specific terms, Spanish-language identifiers, CFDI schema fields, and codebase abbreviations that an onboarding engineer needs to understand. Each entry includes code pointers.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}
